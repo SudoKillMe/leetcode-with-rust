@@ -1,39 +1,59 @@
+use std::collections::HashMap;
 // 入栈出栈
-fn is_valid (s: String) -> bool {
+fn is_valid(s: String) -> bool {
+    let mut hash = HashMap::new();
+    hash.insert(')', '(');
+    hash.insert(']', '[');
+    hash.insert('}', '{');
     let mut result: Vec<char> = vec![];
     for char in s.chars() {
-        // if char == '(' || char == '[' || char == '{' {
-        //     result.push(char);
-        // }
-
-        // if char == ')' || char == ']' || char == '}' {
-        //     result.pop();
-        // }
         match char {
-            | '(' | '[' | '{' => result.push(char),
-            ')' => {
-                if result[result.len() - 1] == '(' {
-                    result.pop();
+            '(' | '[' | '{' => result.push(char),
+            val => {
+                if hash.contains_key(&val) {
+                    // 闭合符号
+                    let top = match result.len() {
+                        0 => '#',
+                        _ => result.pop().unwrap(),
+                    };
+                    if top != *hash.get(&val).unwrap() {
+                        return false;
+                    }
                 } else {
                     result.push(char);
                 }
-            },
-            ']' => {
-                if result[result.len() - 1] == '[' {
-                    result.pop();
-                } else {
-                    result.push(char);
-                }
-            },
-            '}' => {
-                if result[result.len() - 1] == '{' {
-                    result.pop();
-                } else {
-                    result.push(char);
-                }
-            },
-            _ => ()
-            // | ')' | ']' | '}' => result.pop(),
+            }
+            // ')' => {
+            //     if result.len() == 0 {
+            //         return false;
+            //     }
+            //     if result[result.len() - 1] == '(' {
+            //         result.pop();
+            //     } else {
+            //         result.push(char);
+            //     }
+            // }
+            // ']' => {
+            //     if result.len() == 0 {
+            //         return false;
+            //     }
+            //     if result[result.len() - 1] == '[' {
+            //         result.pop();
+            //     } else {
+            //         result.push(char);
+            //     }
+            // }
+            // '}' => {
+            //     if result.len() == 0 {
+            //         return false;
+            //     }
+            //     if result[result.len() - 1] == '{' {
+            //         result.pop();
+            //     } else {
+            //         result.push(char);
+            //     }
+            // }
+            _ => (), // | ')' | ']' | '}' => result.pop(),
         }
         // println!("char {}", char);
     }
@@ -42,7 +62,7 @@ fn is_valid (s: String) -> bool {
 }
 
 #[test]
-fn test_case () {
+fn test_case() {
     let str1 = "()".to_string();
     let str2 = "()[]{}".to_string();
 
