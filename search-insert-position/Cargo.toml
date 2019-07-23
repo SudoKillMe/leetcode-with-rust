@@ -1,5 +1,5 @@
 [package]
-name = "remove-duplicates-from-sorted-array"
+name = "search-insert-position"
 version = "0.1.0"
 authors = ["TecherLang <348262038@qq.com>"]
 edition = "2018"
