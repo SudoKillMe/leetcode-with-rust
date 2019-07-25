@@ -1,6 +1,5 @@
 use std::{thread, time};
 fn search (nums: Vec<i32>, target: i32) -> i32 {
-
     if nums.len() == 0 {
         return -1;
     }
@@ -13,13 +12,9 @@ fn search (nums: Vec<i32>, target: i32) -> i32 {
         if nums[mid] == target {
             return mid as i32;
         }
-        // thread::sleep(time::Duration::from_millis(1000));
         if nums[mid] > target {
-            println!("> mid: {}, left: {}, right: {}", mid, left, right);
-
             right = mid - 1;
         } else {
-            println!("< mid: {}, left: {}, right: {}",mid, left, right );
             left = mid;
         }
     }
