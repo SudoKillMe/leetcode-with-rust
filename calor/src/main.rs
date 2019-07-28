@@ -3,6 +3,7 @@ use std::fmt;
 use std::convert::From;
 use std::str::FromStr;
 use std::string::String;
+#[derive(Clone, Debug, PartialEq, Eq)]
 enum Color {
     Red,
     Yellow,
@@ -109,13 +110,13 @@ impl<'a> Colorize for &'a str {
         ColoredString {
             fgcolor: Some(color.into()),
             input: String::from(self),
-            ..ColoredString::default
+            ..ColoredString::default()
         }
     }
 
     fn on_color<S: Into<Color>>(self, color: S) -> ColoredString {
         ColoredString {
-            bgcolor: Some(color.into),
+            bgcolor: Some(color.into()),
             input: String::from(self),
             ..ColoredString::default()
         }
@@ -172,6 +173,6 @@ impl fmt::Display for ColoredString {
 }
 
 fn main() {
-    let hi = "Hello".color("red").on_color("yello");
+    let hi = "Hello".color("red").on_color("yellow");
     println!("{}", hi);
 }
