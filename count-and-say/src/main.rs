@@ -52,38 +52,9 @@ fn count_and_say(n: i32) -> String {
 
     res
 
-    // let mut current_result = result.clone();
-    // let mut current_count = 0;
-    // let mut current_char = ' ';
-    // for i in 1..=n {
-    //     let mut index = 0;
-    //     while let Some(char) = result.char_at(index) {
-    //         println!(
-    //             " current i: {}, current_index: {}, currentChar: {},  char: {},  current_count: {} ",
-    //             i, index, current_char, char, current_count
-    //         );
-    //         if char != current_char {
-    //             if current_count != 0 {
-    //                 current_result.push_str(&current_count.to_string());
-    //             }
-    //             if current_char != ' ' {
-    //                 current_result.push(current_char);
-    //             }
-    //             current_char = char;
-    //         } else {
-    //             current_count += 1;
-    //         }
-    //         index += 1;
-    //     }
-    //     // println!(" current i: {}, current_Result: {} ", i, current_result);
-    //     // result = current_result;
-    // }
 }
 
 fn main() {
-    // let string = "12345".to_string();
-    // let char = string.char_at(5);
-    // let result = count_and_say(5);
     let result = count_and_say(5);
     println!("{:?}", result);
 }
