@@ -11,7 +11,7 @@ fn is_valid(s: String) -> bool {
             '(' | '[' | '{' => result.push(char),
             val => {
                 if hash.contains_key(&val) {
-                    // 闭合符号
+                    // close
                     let top = match result.len() {
                         0 => '#',
                         _ => result.pop().unwrap(),
@@ -20,42 +20,12 @@ fn is_valid(s: String) -> bool {
                         return false;
                     }
                 } else {
+                    // open
                     result.push(char);
                 }
             }
-            // ')' => {
-            //     if result.len() == 0 {
-            //         return false;
-            //     }
-            //     if result[result.len() - 1] == '(' {
-            //         result.pop();
-            //     } else {
-            //         result.push(char);
-            //     }
-            // }
-            // ']' => {
-            //     if result.len() == 0 {
-            //         return false;
-            //     }
-            //     if result[result.len() - 1] == '[' {
-            //         result.pop();
-            //     } else {
-            //         result.push(char);
-            //     }
-            // }
-            // '}' => {
-            //     if result.len() == 0 {
-            //         return false;
-            //     }
-            //     if result[result.len() - 1] == '{' {
-            //         result.pop();
-            //     } else {
-            //         result.push(char);
-            //     }
-            // }
-            _ => (), // | ')' | ']' | '}' => result.pop(),
+            _ => (),
         }
-        // println!("char {}", char);
     }
 
     result.len() == 0

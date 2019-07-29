@@ -6,15 +6,25 @@ fn my_sqrt(x: i32) -> i32 {
 
     while left < right {
         let middle = (left + right + 1) >> 1;
+
         let square = middle * middle;
 
         if square == x {
             return middle as i32;
         }
 
+        thread::sleep(time::Duration::from_millis(1000));
         if square < x {
+            println!(
+                " <  square: {}, middle: {}, left: {}, right: {} ",
+                square, middle, left, right
+            );
             left = middle;
         } else {
+            println!(
+                " >  square: {}, middle: {}, left: {}, right: {} ",
+                square, middle, left, right
+            );
             right = middle - 1;
         }
     }
@@ -35,5 +45,6 @@ fn test_one() {
 }
 
 fn main() {
-    my_sqrt(8);
+    let s = my_sqrt(2147395599);
+    println!("{}", s);
 }
