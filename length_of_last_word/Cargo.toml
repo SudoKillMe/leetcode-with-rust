@@ -1,0 +1,6 @@
+[package]
+name = "length_of_last_word"
+version = "0.1.0"
+authors = ["techer <348262038@qq.com>"]
+
+[dependencies]
