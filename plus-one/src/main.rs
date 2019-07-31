@@ -1,23 +1,20 @@
 
 fn plus_one(digits: Vec<i32>) -> Vec<i32> {
-    let mut carry = 0;
-    let mut result: Vec<i32> = vec![];
+    let mut result: Vec<i32> = digits.clone();
 
-    for i in (0..digits.len()).rev() {
-        let num = digits[i];
-        let mut t = num + carry;
-        if i == digits.len() - 1 {
-            t += 1;
+    for i in (0..result.len()).rev() {
+        let mut num = result[i];
+
+        num += 1;
+        num %= 10;
+
+        result[i] = num;
+
+        if num != 0 {
+            return result;
         }
-        if t >= 10 {
-            carry = t / 10;
-            t = t % 10;
-        } else {
-            carry = 0;
-        }
-        result.insert(0, t);
     }
-
+    result.insert(0, 1);
     result
 }
 
@@ -31,6 +28,12 @@ fn test_one() {
 fn test_two() {
     let vec = vec![4,3,2,1];
     assert_eq!(plus_one(vec), [4,3,2,2]);
+}
+
+#[test]
+fn test_three() {
+    let vec = vec![9];
+    assert_eq!(plus_one(vec), [1,0]);
 }
 
 fn main() {
