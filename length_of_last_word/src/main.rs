@@ -1,8 +1,8 @@
 
 fn length_of_last_word(s: String) -> i32 {
-    let vec = s.split(char::is_whitespace).collect::<Vec<&str>>();
+    let vec = s.trim().split(char::is_whitespace).collect::<Vec<&str>>();
     let last = vec[vec.len() - 1];
-
+    println!("{:?}", vec);
     if last.len() != 0 {
         last.len() as i32
     } else {
@@ -17,5 +17,7 @@ fn test(){
 }
 
 fn main() {
-    println!("Hello, world!");
+    let s = "a ".to_string();
+    let result = length_of_last_word(s);
+//    println!("{}", result);
 }
