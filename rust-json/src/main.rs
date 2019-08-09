@@ -1,4 +1,11 @@
 use serde_json::{Result, Value, json};
+//use serde_json::serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct Address {
+    street: String,
+    city: String
+}
 
 fn untyped_example() -> Result<()> {
     let data = r#"
