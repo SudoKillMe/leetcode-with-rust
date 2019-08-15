@@ -1,3 +1,4 @@
+
 fn add_binary(a: String, b: String) -> String {
     let mut a_vec = a.chars().collect::<Vec<char>>();
     let mut b_vec = b.chars().collect::<Vec<char>>();
@@ -66,4 +67,5 @@ fn main() {
     let chcar = 'a';
     let test: Vec<char> = String::from("ddddsss").chars().collect();
     println!("{:?}", test)
+
 }
