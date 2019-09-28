@@ -1,5 +1,5 @@
 pub mod first;
-
+pub mod third;
 #[cfg(test)]
 mod tests {
     use super::first::List;
@@ -20,5 +20,11 @@ mod tests {
         list.peek_mut().map(|value| {
             *value = 42
         });
+
+        let mut iter = list.into_iter();
+        assert_eq!(iter.next(), Some(42));
+        assert_eq!(iter.next(), Some(2));
+        assert_eq!(iter.next(), Some(1));
+        assert_eq!(iter.next(), None);
     }
 }
